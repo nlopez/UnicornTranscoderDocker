@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+echo "Starting UnicornTranscoder."
+
+exec s6-setuidgid plex /bin/sh -c 'cd /opt/UnicornTranscoder* && npm start'

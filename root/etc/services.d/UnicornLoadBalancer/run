@@ -1,6 +1,8 @@
 #!/usr/bin/with-contenv bash
 
-echo "Starting UnicornTranscoder"
+echo "Starting UnicornLoadBalancer."
 
-# exec s6-setuidgid plex /bin/sh -c 'sleep 1000000'
-exec s6-setuidgid plex /bin/sh -c 'DEBUG=* node /opt/UnicornLoadBalancer-2.4.0/index.js'
+export PLEX_PATH_SESSIONS="/config/Library/Application Support/Plex Media Server/Cache/Transcode/Sessions"
+export DATABASE_SQLITE_PATH="/config/Library/Application Support/Plex Media Server/Plug-in Support/Databases/com.plexapp.plugins.library.db"
+
+exec s6-setuidgid plex /bin/sh -c 'cd /opt/UnicornLoadBalancer* && npm start'
