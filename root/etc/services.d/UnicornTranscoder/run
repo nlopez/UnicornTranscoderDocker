@@ -2,6 +2,4 @@
 
 echo "Starting UnicornTranscoder."
 
-export INSTANCE_ADDRESS="http://$(hostname -f):3000"
-
 exec s6-setuidgid plex /bin/sh -c 'cd /opt/UnicornTranscoder* && npm start'
